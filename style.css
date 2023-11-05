@@ -14,16 +14,16 @@ body {
 }
 
 .content-container {
-    width: 32%;
-    height: 35%;
+    width: 387px;
+    height: 226px;
     border: 2px solid #14141452;
     padding: 20px;
     background-color: #0d0d0d84;
-    text-align: center; /* Center the content horizontally inside the container */
+    text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center the content vertically inside the container */
-    position: absolute; /* Use absolute positioning */
+    align-items: center;
+    position: absolute;
     backdrop-filter: blur(9px);
 }
 
