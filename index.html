@@ -1,36 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;700&display=swap">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Poppins&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;700&display=swap"
+    />
     <title>i love cumos</title>
-</head>
-<body>
-    <audio loop preload="auto" id="audio" src="media/audio.mp3" type="audio/mp3" muted></audio>
+  </head>
+  <body>
+    <audio autoplay id="audio" src="media/audio.mp3" type="audio/mp3"></audio>
+    <div class="overlay">
+      <div class="overlay content">
+        <span class="overtext"> Click to Enter </span>
+      </div>
+    </div>
+
     <div class="content-container">
-        <div class="pfp"></div>
-        <div class="username">
-            @Wurdo
-            <div class="desc">
-                sum aint right
-            </div>
-        </div>
+      <div class="pfp"></div>
+      <div class="username">
+        @Wurdo
+        <div class="desc">sum aint right</div>
+      </div>
     </div>
 
-    <div id="particles-js">
-    </div>
-
-    <script>
-        const audio = document.getElementById("audio");
-        audio.muted = false; // Unmute the audio
-        audio.play();
-    </script>
+    <div id="particles-js"></div>
 
     <script src="particles.js"></script>
     <script src="app.js"></script>
 
-</body>
+    <script>
+        const audio = document.getElementById("audio");
+        const playButtons = document.getElementsByClassName("overlay");
+      
+        for (let i = 0; i < playButtons.length; i++) {
+          playButtons[i].addEventListener("click", function () {
+            this.classList.add("hide");
+            audio.play();
+          });
+        }
+      </script>
+
+  </body>
 </html>
