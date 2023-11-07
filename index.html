@@ -9,7 +9,7 @@
     <title>i love cumos</title>
 </head>
 <body>
-    <audio loop preload="auto" id="audio" src="media/audio.mp3" type="audio/mp3"></audio>
+    <audio loop preload="auto" id="audio" src="media/audio.mp3" type="audio/mp3" muted></audio>
     <div class="content-container">
         <div class="pfp"></div>
         <div class="username">
@@ -24,7 +24,9 @@
     </div>
 
     <script>
-        document.getElementById("audio").play();
+        const audio = document.getElementById("audio");
+        audio.muted = false; // Unmute the audio
+        audio.play();
     </script>
 
     <script src="particles.js"></script>
