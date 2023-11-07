@@ -1,7 +1,7 @@
 body {
     background-image: url(lolimages/aron-visuals-bZZp1PmHI0E-unsplash.jpg);
     background-color: black;
-    background-size: 70%;
+    background-size: 758px;
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
@@ -10,9 +10,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
     height: 100vh;
 }
-
 .content-container {
     width: 387px;
     height: 226px;
@@ -116,7 +116,7 @@ body {
     0% {
         text-shadow: 0 8px 20px #ffffff;
     }
-    100% {
+    50% {
         text-shadow: 0 8px 20px transparent;
     }
 }
