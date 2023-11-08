@@ -130,3 +130,30 @@ body {
     width: 100%;
     height: 100vh;
 }
+
+.insta {
+    display: block;
+    position: relative;
+    top: 337px;
+    left: -154px;
+}
+.instaicon {
+    width: 20px;
+    height: 20px; /* Set a fixed height to maintain a square shape */
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: inline-block; /* Use inline-block display */
+    vertical-align: middle; /* Align the image vertically to the middle */
+    
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    filter 0.4s cubic-bezier(0.23, 1, 0.32, 1); /* Add transition for filter */
+
+    filter: drop-shadow(0 0 5px rgba(103, 103, 103, 0.8)); /* Add a drop shadow on hover */
+}
+
+.instaicon:hover {
+    width: 21px;
+    height: 21px;
+    transform: scale(1.5);
+    filter: drop-shadow(0 0 10px rgba(103, 103, 103, 0.8)); /* Add a drop shadow on hover */
+}
+
