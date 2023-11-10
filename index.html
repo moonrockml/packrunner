@@ -15,7 +15,32 @@
     <title>i love cumos</title>
   </head>
   <body>
-    <audio loop autoplay id="audio" src="media/audio.mp3" type="audio/mp3"></audio>
+    <h1 id="counter">0</h1>
+
+    <script>
+        // Check if the page views are stored in local storage
+        if (localStorage.getItem('pageViews')) {
+            // Retrieve the current count from local storage
+            let count = parseInt(localStorage.getItem('pageViews'));
+            // Increment the count
+            count++;
+            // Update the display and store the updated count
+            document.getElementById('counter').textContent = count;
+            localStorage.setItem('pageViews', count);
+        } else {
+            // If page views are not in local storage, initialize it with 1
+            localStorage.setItem('pageViews', 1);
+            document.getElementById('counter').textContent = 1;
+        }
+    </script>
+
+    <audio autoplay loop id="audio" src="media/audio.mp3" type="audio/mp3"></audio>
+
+    <video autoplay loop muted playsinline id="bgVideo">
+      <source src="media/Lil Tecca - 500lbs (Official Video).mp4" type="video/mp4">
+      Your browser does not support the video tag.
+  </video>
+
     <div class="overlay">
       <div class="overlay content">
         <span class="overtext"> Click to Enter </span>
@@ -23,6 +48,9 @@
     </div>
 
     <div class="content-container">
+      
+      <div id="particles-js"></div>
+
       <div class="pfp"></div>
       <div class="username">
         @Wurdo
@@ -34,12 +62,6 @@
      </a>
      
     </div>
-  
-
-    <div id="particles-js"></div>
-
-    <script src="particles.js"></script>
-    <script src="app.js"></script>
 
     <script>
         const audio = document.getElementById("audio");
