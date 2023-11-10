@@ -1,5 +1,4 @@
 body {
-    background-image: url(lolimages/aron-visuals-bZZp1PmHI0E-unsplash.jpg);
     background-color: black;
     background-size: 758px;
     background-repeat: no-repeat;
@@ -13,12 +12,26 @@ body {
     width: 100%;
     height: 100vh;
 }
+
+#bgVideo {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+
+
 .content-container {
-    width: 387px;
-    height: 226px;
+    width: 526px;
+    height: 336px;
     border: 2px solid #14141452;
     padding: 20px;
-    background-color: #07070784;
+    background-color: #080808ed;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -27,21 +40,26 @@ body {
     backdrop-filter: blur(9px);
 }
 
+@media (max-width: 768px) { /* Adjust the max-width value to your preferred breakpoint */
+    .content-container {
+        width: 100%; /* Change the width for mobile devices */
+    }
+}
 
 .pfp {
     display: block;
     background-image: url(lolimages/pfp.webp);
     background-repeat: no-repeat;
     background-position: center center;
-    width: 100px; 
-    height: 100px; 
+    width: 135px; 
+    height: 135px; 
     border-radius: 50%;
     background-size: cover; 
     position: absolute; 
     top: 0%; 
     left: 50%;
     transform: translate(-50%, -50%);
-    transition: transform 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.8));
 }
 
 .username {
@@ -90,6 +108,11 @@ body {
     width: 200px;
 }
 
+#particles-js{
+    width: 100%;
+    height: 100vh;
+}
+
 .overlay {
     display: flex;
     justify-content: center;
@@ -126,16 +149,11 @@ body {
     pointer-events: none; /* Disable pointer events when hidden */
 }
 
-#particles-js{
-    width: 100%;
-    height: 100vh;
-}
-
 .insta {
     display: block;
-    position: relative;
-    top: 211px;
-    left: -188px;
+    position: inherit;
+    top: 339px;
+    left: 19px;
 }
 .instaicon {
     width: 20px;
@@ -156,4 +174,5 @@ body {
     transform: scale(1.5);
     filter: drop-shadow(0 0 10px rgba(103, 103, 103, 0.8)); /* Add a drop shadow on hover */
 }
+
 
