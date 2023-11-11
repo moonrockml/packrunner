@@ -15,36 +15,6 @@
     <title>i love cumos</title>
   </head>
   <body>
-    <h1 id="counter">0</h1>
-
-    <script>
-      // Check if the page views are stored in local storage
-      if (localStorage.getItem("pageViews")) {
-        // Retrieve the current count from local storage
-        let count = parseInt(localStorage.getItem("pageViews"));
-        // Increment the count
-        count++;
-        // Update the display and store the updated count
-        document.getElementById("counter").textContent = count;
-        localStorage.setItem("pageViews", count);
-      } else {
-        // If page views are not in local storage, initialize it with 1
-        localStorage.setItem("pageViews", 1);
-        document.getElementById("counter").textContent = 1;
-      }
-    </script>
-
-    <div id="bgVideo">
-      <iframe
-        src="https://player.vimeo.com/video/883438641?autoplay=1&loop=1&controls=0"
-        frameborder="0"
-        allow="autoplay; fullscreen; picture-in-picture"
-        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%"
-        title="Lil Tecca - 500lbs (Official Video)"
-      ></iframe>
-    </div>
-    <script src="https://player.vimeo.com/api/player.js"></script>
-    <script src="script.js"></script>
     
     <div class="overlay">
       <div class="overlay content">
