@@ -139,9 +139,9 @@ body {
 
 .insta {
     display: block;
-    position: inherit;
-    top: 339px;
-    left: 19px;
+    position: relative;
+    top: 96%;
+    left: -50%;
 }
 .instaicon {
     width: 20px;
