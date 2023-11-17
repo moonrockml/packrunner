@@ -29,6 +29,7 @@ body {
     align-items: center;
     position: absolute;
     backdrop-filter: blur(9px);
+    border-radius: 13px;
 }
 
 
