@@ -1,52 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Poppins&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;700&display=swap"
-    />
-    <title>i love cumos</title>
-  </head>
-  <body>
-
-    <div class="overlay">
-      <div class="overlay content">
-        <span class="overtext"> Click to Enter </span>
-      </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="mystyle.css" />
+    <title>My prof</title>
+</head>
+<body>
+    <div class="content">
+    <img class="pfp" src="media/pfp.webp"></img>
+    <p class="username">@Wurdo</p>
+    <p class="projectstext">Projects</p>
+    <div class="projectbox">
+        <div id="prj1">
+            <div id="circle1"></div>
+            <div id="circle2"></div>
+            <div class="project-frame">
+                <p id="title1">Nothing to see here...</p>
+                <p id="title2">Yet</p>
+            </div>
+        </div>
     </div>
-
-    <audio autoplay loop id="audio" src="media/audio.mp3" type="audio/mp3"></audio>
-
-    <div class="content-container">
-
-      <img class="pfp" src="lolimages/pfp.webp"></img>
-      <div class="username">
-        @Wurdo
-        <div class="desc">sum aint right</div>
-      </div>
-
-      <a class="insta" href="https://www.instagram.com/saints.64/">
-        <img class="instaicon" src="lolimages/Instagram_logo_2016.svg.png" />
-      </a>
+    <a class="insta" href="https://www.instagram.com/saints.64/" target="_blank">
+        <img id="instaicon" src="media/Instagram_logo_2016.svg.png" alt="">
+    </a>
     </div>
-
-    <script>
-      const audio = document.getElementById("audio");
-      const playButtons = document.getElementsByClassName("overlay");
-
-      for (let i = 0; i < playButtons.length; i++) {
-        playButtons[i].addEventListener("click", function () {
-          this.classList.add("hide");
-          audio.play();
-        });
-      }
-    </script>
-  </body>
+</body>
 </html>
