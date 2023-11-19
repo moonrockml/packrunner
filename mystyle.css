@@ -1,0 +1,157 @@
+body{
+    background-color: black;
+    min-height: 100vh; /* Set the minimum height to 100% of the viewport height */
+    margin: 0;
+}
+
+.content {
+    display: flex;
+    position: absolute;
+    top: 20%;
+    left: 24%;
+    width: 451px;
+    height: 509px;
+}
+
+.pfp {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    filter: drop-shadow(0 0 40px rgba(33, 33, 33, 0.8));
+}
+
+.username {
+    position: absolute;
+    color: #1900FA;
+    text-shadow: 0 8px 20px #1900FA;
+    font-family: 'Poppins';
+    font-weight: 200;
+    top: 117px;
+    left: 33px;
+    background-image: url(media/picmix.com_1777484.gif);
+    background-position: center center;
+    background-size: 70%;
+    font-size: large;
+}
+
+.projectstext{
+    position: absolute;
+    color: #ffffff;
+    font-family: 'Poppins';
+    font-weight: 200;
+    top: 215px;
+    left: 33px;
+    font-size: large;
+    font-weight: 500;
+}
+
+.insta {
+    display: flex;
+    background-color: rgba(255, 255, 255, 0);
+    width: 30px;
+    height: 30px;
+    top: 175px;
+    left: 7%;
+    position: absolute;
+    border-radius: 9px;
+    border: 2px solid transparent;
+    border-color: #171717;
+    align-content: center;
+    transition: box-shadow 0.3s ease;
+}
+
+#instaicon{
+    scale: 0.9;
+}
+
+.insta:hover {
+    box-shadow: 0 0 10px rgba(105, 105, 105, 0.5); /* Added box-shadow on hover */
+}
+
+#instaicon {
+    transform: scale(0.7);
+    transition: transform 0.3s ease; /* Added transition for scaling */
+}
+
+.insta:hover #instaicon {
+    transform: scale(0.9); /* Scale up on hover */
+}
+
+.projectbox {
+    display: flex;
+    align-items: stretch;
+    flex-direction: row;
+    width: 452px;
+    height: 210px;
+    position: absolute;
+    top: 268px;
+    left: 30px;
+}
+
+#prj1 {
+    background-color: #060606;
+    width: 260px;
+    border-radius: 24px;
+    border: 1px solid transparent;
+    border-color: #0c0c0c;
+    overflow: hidden;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+#circle1 {
+    position: relative;
+    background-color: #f200eb;
+    width: 123px;
+    height: 123px;
+    filter: blur(62px);
+    border-radius: 50px;
+    top: -69px;
+    left: -63px;
+}
+
+#circle2 {
+    position: relative;
+    background-color: #1100f2;
+    width: 123px;
+    height: 123px;
+    filter: blur(62px);
+    border-radius: 50px;
+    top: 41px;
+    left: 111px;
+}
+
+.project-frame {
+    display: flex;
+    background-color: #00000061;
+    width: 56%;
+    height: 139px;
+    position: absolute;
+    top: 5px;
+    border-radius: 20px;
+    backdrop-filter: blur(65px);
+    border: 1px solid transparent;
+    border-color: #111111;
+}
+
+#title1 {
+    position: absolute;
+    color: white;
+    font-family: 'Poppins';
+    top: 133px;
+    left: 10px;
+    font-size: small;
+}
+
+#title2 {
+    position: absolute;
+    color: #ffffff30;
+    font-family: 'Poppins';
+    top: 150px;
+    left: 10px;
+    font-size: small;
+}
