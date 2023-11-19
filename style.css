@@ -1,166 +1,157 @@
-body {
-    background-image: url(lolimages/yeat-yaya.gif);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    background-color: #000000;
-    background-size: 1300px;
+body{
+    background-color: black;
+    min-height: 100vh; /* Set the minimum height to 100% of the viewport height */
     margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100vh;
 }
 
-
-
-
-.content-container {
-    width: 526px;
-    height: 336px;
-    border: 2px solid #14141452;
-    padding: 20px;
-    background-color: #080808ed;
-    text-align: center;
+.content {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     position: absolute;
-    backdrop-filter: blur(9px);
-    border-radius: 13px;
+    top: 20%;
+    left: 24%;
+    width: 451px;
+    height: 509px;
 }
-
 
 .pfp {
-    display: block;
-    background-image: url(lolimages/pfp.webp);
-    background-repeat: no-repeat;
-    background-position: center center;
-    width: 135px;
-    height: 135px;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
-    background-size: cover;
     position: absolute;
-    top: 23%;
-    left: 17%;
-    transform: translate(-50%, -50%);
-    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.8));
+    top: 10px;
+    left: 20px;
+    filter: drop-shadow(0 0 40px rgba(33, 33, 33, 0.8));
 }
 
 .username {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: #1900FA;
-    font-family: 'Poppins', sans-serif;
     position: absolute;
-    top: 10%;
-    left: 36%;
-    font-size: large;
-    font-weight: 600;
+    color: #1900FA;
     text-shadow: 0 8px 20px #1900FA;
-    background-image: url(lolimages/picmix.com_1777484.gif);
+    font-family: 'Poppins';
+    font-weight: 200;
+    top: 117px;
+    left: 33px;
+    background-image: url(media/picmix.com_1777484.gif);
     background-position: center center;
     background-size: 70%;
+    font-size: large;
 }
 
-.creds {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: #ffffff33;
-    font-family: 'DM Mono', monospace;
+.projectstext{
     position: absolute;
-    top: 93%;
-    right: 60%;
-    width: 163px;
-    font-size: 10px;
-}
-
-.desc{
-    display: flex;
-    justify-content: center; /* Center the content horizontally */
-    align-items: center; /* Center the content vertically */
-    text-align: center; /* Center the text horizontally */
-    color: #ffffff33;
-    font-family: 'DM Mono', monospace;
-    position: absolute; /* Use absolute positioning */
-    top: 125%; /* Adjust the top position to move the div vertically */
-    font-size: 13px;
-    font-weight: 100;
-    text-shadow: 0 8px 20px #000000; /* Add a background shadow blur to the text */
-    width: 200px;
-}
-
-#particles-js{
-    width: 100%;
-    height: 100vh;
-}
-
-.overlay {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: rgb(0, 0, 0);
-    z-index: 20;
-    transition: opacity 0.5s ease;
-    pointer-events: auto;
-}
-
-.overtext{
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    text-shadow: 0 8px 20px #ffffff;
-    animation: textShadowFade 2s infinite alternate;
-}
-
-@keyframes textShadowFade {
-    0% {
-        text-shadow: 0 8px 20px #ffffff;
-    }
-    50% {
-        text-shadow: 0 8px 20px transparent;
-    }
-}
-
-.overlay.hide {
-    opacity: 0; /* Opacity when hidden */
-    pointer-events: none; /* Disable pointer events when hidden */
+    color: #ffffff;
+    font-family: 'Poppins';
+    font-weight: 200;
+    top: 215px;
+    left: 33px;
+    font-size: large;
+    font-weight: 500;
 }
 
 .insta {
-    display: block;
+    display: flex;
+    background-color: rgba(255, 255, 255, 0);
+    width: 30px;
+    height: 30px;
+    top: 175px;
+    left: 7%;
+    position: absolute;
+    border-radius: 9px;
+    border: 2px solid transparent;
+    border-color: #171717;
+    align-content: center;
+    transition: box-shadow 0.3s ease;
+}
+
+#instaicon{
+    scale: 0.9;
+}
+
+.insta:hover {
+    box-shadow: 0 0 10px rgba(105, 105, 105, 0.5); /* Added box-shadow on hover */
+}
+
+#instaicon {
+    transform: scale(0.7);
+    transition: transform 0.3s ease; /* Added transition for scaling */
+}
+
+.insta:hover #instaicon {
+    transform: scale(0.9); /* Scale up on hover */
+}
+
+.projectbox {
+    display: flex;
+    align-items: stretch;
+    flex-direction: row;
+    width: 452px;
+    height: 210px;
+    position: absolute;
+    top: 268px;
+    left: 30px;
+}
+
+#prj1 {
+    background-color: #060606;
+    width: 260px;
+    border-radius: 24px;
+    border: 1px solid transparent;
+    border-color: #0c0c0c;
+    overflow: hidden;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+#circle1 {
     position: relative;
-    top: 93%;
-    left: -47%;
-}
-.instaicon {
-    width: 20px;
-    height: 20px; /* Set a fixed height to maintain a square shape */
-    transition: transform 0.3s, box-shadow 0.3s;
-    display: inline-block; /* Use inline-block display */
-    vertical-align: middle; /* Align the image vertically to the middle */
-    
-    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
-    filter 0.4s cubic-bezier(0.23, 1, 0.32, 1); /* Add transition for filter */
-
-    filter: drop-shadow(0 0 5px rgba(103, 103, 103, 0.8)); /* Add a drop shadow on hover */
+    background-color: #f200eb;
+    width: 123px;
+    height: 123px;
+    filter: blur(62px);
+    border-radius: 50px;
+    top: -69px;
+    left: -63px;
 }
 
-.instaicon:hover {
-    width: 21px;
-    height: 21px;
-    transform: scale(1.5);
-    filter: drop-shadow(0 0 10px rgba(103, 103, 103, 0.8)); /* Add a drop shadow on hover */
+#circle2 {
+    position: relative;
+    background-color: #1100f2;
+    width: 123px;
+    height: 123px;
+    filter: blur(62px);
+    border-radius: 50px;
+    top: 41px;
+    left: 111px;
 }
 
+.project-frame {
+    display: flex;
+    background-color: #00000061;
+    width: 56%;
+    height: 139px;
+    position: absolute;
+    top: 5px;
+    border-radius: 20px;
+    backdrop-filter: blur(65px);
+    border: 1px solid transparent;
+    border-color: #111111;
+}
 
+#title1 {
+    position: absolute;
+    color: white;
+    font-family: 'Poppins';
+    top: 133px;
+    left: 10px;
+    font-size: small;
+}
+
+#title2 {
+    position: absolute;
+    color: #ffffff30;
+    font-family: 'Poppins';
+    top: 150px;
+    left: 10px;
+    font-size: small;
+}
