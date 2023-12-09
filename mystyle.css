@@ -19,8 +19,11 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-blend-mode: screen;
+    background-attachment: scroll; /* Add this line */
+    background-position: center; /* Add this line */
     overflow: hidden;
 }
+
 
 
 .content {
