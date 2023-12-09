@@ -6,159 +6,108 @@
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <link rel="stylesheet" href="mystyle.css" />
-    <title>My prof</title>
+    <title>Wurdo the great.</title>
 </head>
 <body>
     <div id="custom-cursor" style="position: absolute; width: 20px; height: 20px; border-radius: 50%; pointer-events: none;"></div>
     <main class="scene"></main>
-    <div class="content">
+  <div class="content">
     <img class="pfp" src="media/pfp.jpeg"></img>
-    <p class="username">wurdo</p>
-    <a class="insta" href="https://www.instagram.com/saints.64/" target="_blank">
-        <img id="instaicon" src="media/Instagram_logo_2016.svg.png" alt="">
+    <p class="username">@wurdo</p>
+    <div class="divider"></div>
+    <div class="socials"> 
+      <a id="social" class="insta" href="https://www.instagram.com/saints.64/" target="_blank">
+        <img id="socialicon" src="media/Instagram_logo_2016.svg.png" alt="">
     </a>
-    <a class="rblx" href="https://www.roblox.com/users/1676603195/profile" target="_blank">
-        <img id="rblxicon" src="media/rblx.png" alt="">
+    <a id="social" class="rblx" href="https://www.roblox.com/users/1676603195/profile" target="_blank">
+        <img id="socialicon" src="media/rblx.png" alt="">
     </a>
 
-    <a class="steam" href="https://steamcommunity.com/id/proxydll" target="_blank">
-        <img id="steamicon" src="media/Steam_icon_logo.svg.png" alt="">
+    <a id="social" class="steam" href="https://steamcommunity.com/id/proxydll" target="_blank">
+        <img id="socialicon" src="media/Steam_icon_logo.svg.png" alt="">
     </a>
+    </div>
 </div>
 <script src="three.min.js"></script>
     <script>
- 
 
+let camera, scene, renderer;
+    let snowflakes = [];
 
- let scene, camera, renderer, stars, starGeo;
-      let mouseX = 0, mouseY = 0;
-      let isMouseDown = false;
+    init();
+    animate();
 
-      function init() {
-        scene = new THREE.Scene();
+    function init() {
+      // Camera
+      camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 1, 1000);
+      camera.position.z = 100;
 
-        camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
-        camera.position.z = 1;
-        camera.rotation.x = Math.PI / 2;
+      // Scene
+      scene = new THREE.Scene();
 
-        renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
+      // Renderer
+      renderer = new THREE.WebGLRenderer({ alpha: true});
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
 
-        starGeo = new THREE.Geometry();
-        for (let i = 0; i < 6000; i++) {
-          const star = new THREE.Vector3(
-            Math.random() * 1000 - 500,
-            Math.random() * 1000 - 500,
-            Math.random() * 1000 - 500
-          );
-          star.velocity = 0.10;
-          star.acceleration = 0.001;
-          star.deceleration = 0.005;
-          star.isFloating = true;
-          star.initialVelocity = 0.9;
-          starGeo.vertices.push(star);
-        }
+      // Snowflakes
+      const snowflakeGeometry = new THREE.CircleGeometry(0.1, 999);
+      const snowflakeMaterial = new THREE.PointsMaterial({
+        color: 0xffffff,
+      });
 
-        const sprite = new THREE.TextureLoader().load('star.png');
-        const starMaterial = new THREE.PointsMaterial({
-          color: 0xaaaaaa,
-          size: 0.9,
-          map: sprite,
-        });
-
-        stars = new THREE.Points(starGeo, starMaterial);
-        scene.add(stars);
-
-        window.addEventListener('resize', onWindowResize, false);
-        window.addEventListener('mousemove', onMouseMove, false);
-        window.addEventListener('mousedown', onMouseDown, false);
-        window.addEventListener('mouseup', onMouseUp, false);
-
-        animate();
+      for (let i = 0; i < 670; i++) {
+        const snowflake = new THREE.Mesh(snowflakeGeometry, snowflakeMaterial);
+        snowflake.position.x = (Math.random() - 0.5) * 200;
+        snowflake.position.y = (Math.random() - 0.5) * 200;
+        snowflake.position.z = (Math.random() - 0.5) * 200;
+        snowflakes.push(snowflake);
+        scene.add(snowflake);
       }
 
-      function onWindowResize() {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-      }
+      // Event listeners
+      window.addEventListener('resize', onWindowResize);
+      document.addEventListener('mousemove', onMouseMove);
+    }
 
-      function onMouseMove(event) {
-        if (isMouseDown) {
-          mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-          mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
-          repulseStars();
-        }
-      }
+    function animate() {
+  requestAnimationFrame(animate);
 
-      function onMouseDown() {
-        isMouseDown = true;
-        repulseStars();
-      }
+  // Update snowflakes
+  snowflakes.forEach((snowflake) => {
+    snowflake.rotation.z += 0.01;
+    snowflake.position.y -= 0.5;
 
-      function onMouseUp() {
-        isMouseDown = false;
-        setFloatingState();
-      }
+    const respawnY = 50; // Adjust the respawn y position
 
-      function repulseStars() {
-        const repulsionStrength = 0.5;
+    if (snowflake.position.y < -100) {
+      // Respawn at a random position
+      snowflake.position.set((Math.random() - 0.5) * 200, respawnY, (Math.random() - 0.5) * 200);
+    }
+  });
 
-        starGeo.vertices.forEach((p) => {
-          const distanceX = p.x - mouseX * 300;
-          const distanceY = p.y - mouseY * 300;
-          const distanceZ = p.z - camera.position.z;
+  // Render
+  renderer.render(scene, camera);
+}
 
-          const distanceSquared = distanceX ** 2 + distanceY ** 2 + distanceZ ** 2;
 
-          if (distanceSquared < 5000) {
-            const distance = Math.sqrt(distanceSquared);
-            const repulsionForce = repulsionStrength / distance;
+    function onWindowResize() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    }
 
-            p.x += distanceX * repulsionForce;
-            p.y += distanceY * repulsionForce;
-          }
-        });
+    function onMouseMove(event) {
+  const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+  const mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
 
-        starGeo.verticesNeedUpdate = true;
-      }
+  snowflakes.forEach((snowflake) => {
+    const distance = snowflake.position.distanceTo(new THREE.Vector3(mouseX * 100, mouseY * 100, snowflake.position.z));
+    const maxDistance = 15;
+    
+  });
+}
 
-      function setFloatingState() {
-        starGeo.vertices.forEach((p) => {
-          p.isFloating = true;
-          p.velocity = p.initialVelocity; // Reset velocity to initial value
-        });
-      }
-
-      function animate() {
-        const targetX = mouseX * 10;
-        const targetY = mouseY * 10;
-
-        camera.position.x += (targetX - camera.position.x) * 0.02;
-        camera.position.y += (targetY - camera.position.y) * 0.02;
-
-        camera.lookAt(scene.position);
-
-        starGeo.vertices.forEach((p) => {
-          if (p.isFloating) {
-            p.velocity *= 1 - p.deceleration;
-            p.y -= p.velocity;
-
-            if (p.y < -200) {
-              p.y = 200;
-              p.velocity = p.initialVelocity;
-            }
-          }
-        });
-        starGeo.verticesNeedUpdate = true;
-        stars.rotation.y += 0.002;
-
-        renderer.render(scene, camera);
-        requestAnimationFrame(animate);
-      }
-
-      init();
 </script>
     </script>
 
