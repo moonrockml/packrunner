@@ -44,6 +44,30 @@ body {
     border-color: #50505026;
 }
 
+@media screen and (max-width: 600px) {
+    .content {
+        background-color: rgba(255, 255, 255, 0.1); /* Transparent background for mobile */
+        width: 90%; /* Adjusted width for smaller screens */
+        border-radius: 10px; /* Reduced border-radius for smaller screens */
+    }
+
+    .username {
+        font-size: 20px; /* Adjusted font size for mobile */
+    }
+
+    .projectstext {
+        top: 230px; /* Adjusted position for mobile */
+    }
+
+    .socials {
+        top: 270px; /* Adjusted position for mobile */
+    }
+
+    body {
+        overflow: hidden; /* Disable scrolling on mobile */
+    }
+}
+
 
 .pfp {
     width: 115px;
