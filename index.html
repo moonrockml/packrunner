@@ -5,15 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link href="https://fonts.cdnfonts.com/css/lower-pixel" rel="stylesheet">
+                
     <link rel="stylesheet" href="mystyle.css" />
-    <title>Wurdo the great.</title>
+    <title>My prof</title>
 </head>
 <body>
     <div id="custom-cursor" style="position: absolute; width: 20px; height: 20px; border-radius: 50%; pointer-events: none;"></div>
     <main class="scene"></main>
   <div class="content">
     <img class="pfp" src="media/pfp.jpeg"></img>
-    <p class="username">@wurdo</p>
+    <p class="username">wurdo</p>
+    <div class="typing-container">
+      <p id="description"></p>
+      <div class="cursor" id="cursor"></div>
+    </div>
     <div class="divider"></div>
     <div class="socials"> 
       <a id="social" class="insta" href="https://www.instagram.com/saints.64/" target="_blank">
@@ -28,6 +34,47 @@
     </a>
     </div>
 </div>
+<script>
+ document.addEventListener("DOMContentLoaded", function() {
+    const descriptionElement = document.getElementById("description");
+    const cursorElement = document.getElementById("cursor");
+    const descriptions = [
+        "Made in html and css lol",
+        "buy me stuff",
+        "rolls royce"
+        // Add more descriptions as needed
+    ];
+
+    let currentDescriptionIndex = 0;
+    let index = 0;
+
+    function type() {
+        descriptionElement.textContent += descriptions[currentDescriptionIndex][index];
+        index++;
+
+        if (index < descriptions[currentDescriptionIndex].length) {
+            setTimeout(type, 50); // Adjust typing speed (milliseconds)
+        } else {
+            setTimeout(deleteText, 1000); // Adjust delay before deleting text
+        }
+    }
+
+    function deleteText() {
+        if (index > 0) {
+            descriptionElement.textContent = descriptions[currentDescriptionIndex].substring(0, index - 1);
+            index--;
+
+            setTimeout(deleteText, 50); // Adjust deleting speed (milliseconds)
+        } else {
+            currentDescriptionIndex = (currentDescriptionIndex + 1) % descriptions.length;
+            setTimeout(type, 500); // Adjust delay before typing next description
+        }
+    }
+
+    type(); // Start the typing effect
+});
+
+</script>
 <script src="three.min.js"></script>
     <script>
 
