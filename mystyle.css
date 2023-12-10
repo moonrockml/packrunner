@@ -63,6 +63,10 @@ body {
         top: 270px; /* Adjusted position for mobile */
     }
 
+    .divider {
+        display: none; /* Hide the divider on mobile */
+    }
+
     body {
         overflow: hidden; /* Disable scrolling on mobile */
     }
