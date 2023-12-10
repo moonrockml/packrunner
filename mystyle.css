@@ -86,10 +86,11 @@ body {
     position: absolute;
     color: #ffffff;
     text-shadow: 0 8px 20px #ffffff;
-    font-family: 'Poppins';
+    font-family: 'Lower Pixel', sans-serif;
+                                                                                                                                                
     font-size: 27px;
     font-weight: 200;
-    top: 158px;
+    top: 162px;
     background-position: center center;
     background-size: 70%;
     font-weight: 600;
@@ -147,10 +148,10 @@ body {
     flex-direction: row;
     padding-bottom: 0px;
     padding-top: 0px;
-    position: relative;
+    position: absolute;
     /* width: 13px; */
     height: 43px;
-    top: 237px;
+    top: 255px;
     scale: 1.2;
 }
 
@@ -158,6 +159,42 @@ body {
     width: 364px;
     background-color: #ffffff1a;
     height: 1px;
-    top: 212px;
+    top: 233px;
     position: absolute;
+}
+
+.typing-container {
+    position: absolute;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    top: 189px;
+}
+
+#description {
+    font-size: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    padding-right: 5px;
+    margin-right: 5px;
+    color: #ffffff45;
+    font-family: 'Lower Pixel', sans-serif;
+}
+
+.cursor {
+    position: absolute;
+    right: 0;
+    height: 22px; /* Adjust cursor height */
+    width: 2px;
+    background-color: #ffffff;
+    animation: blink 2s infinite;
+}
+
+@keyframes blink {
+    0%, 50%, 100% {
+        opacity: 0;
+    }
+    25%, 75% {
+        opacity: 1;
+    }
 }
