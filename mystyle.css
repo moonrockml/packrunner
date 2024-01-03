@@ -48,7 +48,6 @@ body {
 
 @media screen and (max-width: 600px) {
     .content {
-        background-color: rgba(255, 255, 255, 0.1); /* Transparent background for mobile */
         width: 90%; /* Adjusted width for smaller screens */
         border-radius: 10px; /* Reduced border-radius for smaller screens */
     }
@@ -218,4 +217,29 @@ body {
     background-position: center; /* Add this line */
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.soundbutton {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    background-color: #1a1a1ac2;
+    z-index: 2;
+    border-radius: 9px;
+    align-content: center;
+    /* flex-wrap: wrap; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    -moz-backdrop-filter: blur(8px);
+    -o-backdrop-filter: blur(8px);
+}
+
+.sound {
+    scale: 0.1;
+    /* top: 50%; */
+    /* position: absolute; */
+    /* left: 50%; */
 }
