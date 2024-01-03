@@ -6,239 +6,264 @@
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <link href="https://fonts.cdnfonts.com/css/lower-pixel" rel="stylesheet">
-                
     <link rel="stylesheet" href="mystyle.css" />
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
     <title>My prof</title>
 </head>
 <body>
     <div id="custom-cursor" style="position: absolute; width: 20px; height: 20px; border-radius: 50%; pointer-events: none;"></div>
     <main class="scene"></main>
-  <div class="content">
-    <div class="banner">
-      <img class="pfp" src="media/pfp.jpeg"></img>
+    <div class="content">
+        <div class="banner">
+            <img class="pfp" src="media/pfp.jpeg" alt="Profile Picture">
+        </div>
+        <p class="username">@halfcupid</p>
+        <div class="typing-container">
+            <p id="description"></p>
+            <div class="cursor" id="cursor"></div>
+        </div>
+        <div class="divider"></div>
+        <div class="socials">
+            <a id="social" class="insta" href="https://www.instagram.com/saints.64/" target="_blank">
+                <img id="socialicon" src="media/Instagram_logo_2016.svg.png" alt="Instagram">
+            </a>
+            <a id="social" class="rblx" href="https://www.roblox.com/users/1676603195/profile" target="_blank">
+                <img id="socialicon" src="media/rblx.png" alt="Roblox">
+            </a>
+            <a id="social" class="steam" href="https://steamcommunity.com/id/proxydll" target="_blank">
+                <img id="socialicon" src="media/Steam_icon_logo.svg.png" alt="Steam">
+            </a>
+        </div>
+        <div id="avatar-container"></div>
     </div>
- 
-    <p class="username">@halfcupid</p>
-    <div class="typing-container">
-      <p id="description"></p>
-      <div class="cursor" id="cursor"></div>
-    </div>
-    <div class="divider"></div>
-    <div class="socials"> 
-      <a id="social" class="insta" href="https://www.instagram.com/saints.64/" target="_blank">
-        <img id="socialicon" src="media/Instagram_logo_2016.svg.png" alt="">
-    </a>
-    <a id="social" class="rblx" href="https://www.roblox.com/users/1676603195/profile" target="_blank">
-        <img id="socialicon" src="media/rblx.png" alt="">
-    </a>
+    <b class="soundbutton" id="soundButton">
+        <img class="sound" src="media/soundoff.png" alt="Sound Button">
+    </b>
 
-    <a id="social" class="steam" href="https://steamcommunity.com/id/proxydll" target="_blank">
-        <img id="socialicon" src="media/Steam_icon_logo.svg.png" alt="">
-    </a>
-    </div>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6588389235099021" crossorigin="anonymous"></script>
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6588389235099021"
-     crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const descriptionElement = document.getElementById("description");
+            const cursorElement = document.getElementById("cursor");
+            const descriptions = [
+                "Made in html and css lol",
+                "buy me stuff",
+                "rolls royce",
+                "Happy new year blud",
+                "2024 finna be the worst year I KNOW IT RAH"
+            ];
 
-    <div id="avatar-container"></div>
+            let currentDescriptionIndex = 0;
+            let index = 0;
 
+            function type() {
+                descriptionElement.textContent += descriptions[currentDescriptionIndex][index];
+                index++;
 
-</div>
-<script>
- document.addEventListener("DOMContentLoaded", function() {
-    const descriptionElement = document.getElementById("description");
-    const cursorElement = document.getElementById("cursor");
-    const descriptions = [
-        "Made in html and css lol",
-        "buy me stuff",
-        "rolls royce",
-        "Happynew years blud",
-        "2024 finna be the worst year I KNOW IT RAH"
-    ];
+                if (index < descriptions[currentDescriptionIndex].length) {
+                    setTimeout(type, 50); // Adjust typing speed (milliseconds)
+                } else {
+                    setTimeout(deleteText, 1000); // Adjust delay before deleting text
+                }
+            }
 
-    let currentDescriptionIndex = 0;
-    let index = 0;
+            function deleteText() {
+                if (index > 0) {
+                    descriptionElement.textContent = descriptions[currentDescriptionIndex].substring(0, index - 1);
+                    index--;
 
-    function type() {
-        descriptionElement.textContent += descriptions[currentDescriptionIndex][index];
-        index++;
+                    setTimeout(deleteText, 50); // Adjust deleting speed (milliseconds)
+                } else {
+                    currentDescriptionIndex = (currentDescriptionIndex + 1) % descriptions.length;
+                    setTimeout(type, 500); // Adjust delay before typing next description
+                }
+            }
 
-        if (index < descriptions[currentDescriptionIndex].length) {
-            setTimeout(type, 50); // Adjust typing speed (milliseconds)
-        } else {
-            setTimeout(deleteText, 1000); // Adjust delay before deleting text
-        }
-    }
-
-    function deleteText() {
-        if (index > 0) {
-            descriptionElement.textContent = descriptions[currentDescriptionIndex].substring(0, index - 1);
-            index--;
-
-            setTimeout(deleteText, 50); // Adjust deleting speed (milliseconds)
-        } else {
-            currentDescriptionIndex = (currentDescriptionIndex + 1) % descriptions.length;
-            setTimeout(type, 500); // Adjust delay before typing next description
-        }
-    }
-
-    type(); // Start the typing effect
-});
-
-</script>
-<script src="three.min.js"></script>
-<script src="three.min.js"></script>
-<script>
-
-  let camera, scene, renderer;
-  let rockets = [];
-  let flames = [];
-  let explosions = [];
-  let gravity = new THREE.Vector3(0, -0.02, 0); // Gravity vector
-
-  // Audio
-  let whooshAudio, explosionAudio;
-
-  init();
-  loadAudio();
-  animate();
-
-  function init() {
-    // Camera
-    camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 1, 1000);
-    camera.position.z = 100;
-
-    // Scene
-    scene = new THREE.Scene();
-
-    // Renderer
-    renderer = new THREE.WebGLRenderer({ alpha: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
-
-    // Event listeners
-    window.addEventListener('resize', onWindowResize);
-  }
-
-  function loadAudio() {
-    // Whoosh audio
-    whooshAudio = new Audio('media/whistle.m4a');
-    
-    // Explosion audio
-    explosionAudio = new Audio('media/fireworkaudio.mp3');
-  }
-
-  function createRocket() {
-    // Play whoosh sound when rocket is created
-    const whooshInstance = whooshAudio.cloneNode();
-    whooshInstance.currentTime = 0;
-    whooshInstance.play();
-
-    // Rocket
-    const rocketGeometry = new THREE.BoxGeometry(0.2, 0.5, 0.2);
-    const rocketMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
-
-    const rocket = new THREE.Mesh(rocketGeometry, rocketMaterial);
-    rocket.position.x = (Math.random() - 0.5) * 50;
-    rocket.position.y = -50;
-    rockets.push(rocket);
-    scene.add(rocket);
-
-    // Flames
-    const numFlames = 10;
-    const flameGeometry = new THREE.BoxGeometry(0.05, 0.1, 0.05);
-    const flameMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
-
-    for (let i = 0; i < numFlames; i++) {
-      const flame = new THREE.Mesh(flameGeometry, flameMaterial);
-      flame.position.copy(rocket.position);
-      flame.position.x += (Math.random() - 0.5) * 0.2;
-      flame.position.y -= 0.25;
-      flame.position.z += (Math.random() - 0.5) * 0.2;
-      scene.add(flame);
-      flames.push(flame);
-    }
-  }
-
-  function createExplosion(position) {
-    // Play explosion sound when explosion is created
-    const explosionInstance = explosionAudio.cloneNode();
-    explosionInstance.currentTime = 0;
-    explosionInstance.play();
-
-    // Explosion
-    const numParticles = 60;
-    const explosionGeometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
-    const explosionMaterial = new THREE.MeshBasicMaterial();
-
-    for (let i = 0; i < numParticles; i++) {
-      const particle = new THREE.Mesh(explosionGeometry, explosionMaterial.clone());
-      particle.position.copy(position);
-      particle.velocity = new THREE.Vector3((Math.random() - 0.5) * 2, (Math.random() - 0.5) * 2, (Math.random() - 0.5) * 2);
-      particle.material.color = new THREE.Color(Math.random(), Math.random(), Math.random());
-      scene.add(particle);
-      explosions.push(particle);
-    }
-  }
-
-  function animate() {
-    requestAnimationFrame(animate);
-
-    // Create new rockets at random intervals
-    if (Math.random() < 0.02) {
-      createRocket();
-    }
-
-    // Update rockets
-    rockets.forEach((rocket) => {
-      rocket.position.y += 0.5;
-
-      if (rocket.position.y > -2) {
-        // Rocket has reached the top, create explosion
-        createExplosion(rocket.position);
-
-        // Remove rocket and flames
-        scene.remove(rocket);
-        rockets = rockets.filter(r => r !== rocket);
-
-        flames.forEach(flame => {
-          scene.remove(flame);
+            type(); // Start the typing effect
         });
-        flames = [];
-      }
-    });
+    </script>
+    <script src="https://threejs.org/build/three.min.js"></script>
+    <script>
+        let camera, scene, renderer;
+        let rockets = [];
+        let flames = [];
+        let explosions = [];
+        let gravity = new THREE.Vector3(0, -0.02, 0); // Gravity vector
 
-    // Update flames (apply gravity)
-    flames.forEach((flame) => {
-      flame.velocity = new THREE.Vector3((Math.random() - 0.5) * 0.1, -0.1, (Math.random() - 0.5) * 0.1);
-      flame.position.add(flame.velocity);
-    });
+        // Audio
+        let whooshAudio, explosionAudio;
+        let isAudioMuted = true; // Variable to track audio state
 
-    // Update explosions (apply gravity)
-    explosions.forEach((particle) => {
-      particle.rotation.x += 0.01;
-      particle.rotation.y += 0.01;
-      particle.rotation.z += 0.01;
+        init();
+        loadAudio();
+        animate();
 
-      particle.velocity.add(gravity);
-      particle.position.add(particle.velocity);
-    });
+        function init() {
+            // Camera
+            camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 1, 1000);
+            camera.position.z = 100;
 
-    // Render
-    renderer.render(scene, camera);
-  }
+            // Scene
+            scene = new THREE.Scene();
 
-  function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-  }
+            // Renderer
+            renderer = new THREE.WebGLRenderer({ alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
 
-</script>
+            // Event listeners
+            window.addEventListener('resize', onWindowResize);
 
+            // Sound button click event listener
+            const soundButton = document.getElementById("soundButton");
+            soundButton.addEventListener("click", toggleSound);
+        }
 
+        function loadAudio() {
+            // Whoosh audio
+            whooshAudio = new Audio('media/whistle.m4a');
 
+            // Explosion audio
+            explosionAudio = new Audio('media/fireworkaudio.mp3');
+        }
 
+        function setVolume(audio, volume) {
+            if (audio) {
+                audio.volume = volume;
+            }
+        }
 
+        function toggleSound() {
+            isAudioMuted = !isAudioMuted;
+
+            // Toggle mute state for both audio files
+            setVolume(whooshAudio, isAudioMuted ? 0 : 1);
+            setVolume(explosionAudio, isAudioMuted ? 0 : 1);
+
+            // Change sound button icon
+            const soundIcon = document.querySelector(".sound");
+            soundIcon.src = isAudioMuted ? "media/soundoff.png" : "media/soundon.png";
+        }
+
+        function createRocket() {
+            // Play whoosh sound when rocket is created
+            if (!isAudioMuted) {
+                const whooshInstance = whooshAudio.cloneNode();
+                whooshInstance.currentTime = 0;
+                whooshInstance.play();
+            }
+
+            // Rocket
+            const rocketGeometry = new THREE.BoxGeometry(0.2, 0.5, 0.2);
+            const rocketMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+
+            const rocket = new THREE.Mesh(rocketGeometry, rocketMaterial);
+            rocket.position.x = (Math.random() - 0.5) * 50;
+            rocket.position.y = -50;
+            rockets.push(rocket);
+            scene.add(rocket);
+
+            // Flames
+            const numFlames = 10;
+            const flameGeometry = new THREE.BoxGeometry(0.05, 0.1, 0.05);
+            const flameMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+
+            for (let i = 0; i < numFlames; i++) {
+                const flame = new THREE.Mesh(flameGeometry, flameMaterial);
+                flame.position.copy(rocket.position);
+                flame.position.x += (Math.random() - 0.5) * 0.2;
+                flame.position.y -= 0.25;
+                flame.position.z += (Math.random() - 0.5) * 0.2;
+                scene.add(flame);
+                flames.push(flame);
+            }
+        }
+
+        function createExplosion(position) {
+            // Play explosion sound when explosion is created
+            if (!isAudioMuted) {
+                const explosionInstance = explosionAudio.cloneNode();
+                explosionInstance.currentTime = 0;
+                explosionInstance.play();
+            }
+
+            // Explosion
+            const numParticles = 60;
+            const explosionGeometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
+            const explosionMaterial = new THREE.MeshBasicMaterial();
+
+            for (let i = 0; i < numParticles; i++) {
+                const particle = new THREE.Mesh(explosionGeometry, explosionMaterial.clone());
+                particle.position.copy(position);
+                particle.velocity = new THREE.Vector3((Math.random() - 0.5) * 2, (Math.random() - 0.5) * 2, (Math.random() - 0.5) * 2);
+                particle.material.color = new THREE.Color(Math.random(), Math.random(), Math.random());
+                scene.add(particle);
+                explosions.push(particle);
+            }
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Create new rockets at random intervals
+            if (Math.random() < 0.02) {
+                createRocket();
+            }
+
+            // Update rockets
+            rockets.forEach((rocket) => {
+                rocket.position.y += 0.5;
+
+                if (rocket.position.y > -2) {
+                    // Rocket has reached the top, create explosion
+                    createExplosion(rocket.position);
+
+                    // Remove rocket and flames
+                    scene.remove(rocket);
+                    rockets = rockets.filter(r => r !== rocket);
+
+                    flames.forEach(flame => {
+                        scene.remove(flame);
+                    });
+                    flames = [];
+                }
+            });
+
+            // Update flames (apply gravity)
+            flames.forEach((flame) => {
+                flame.velocity = new THREE.Vector3((Math.random() - 0.5) * 0.1, -0.1, (Math.random() - 0.5) * 0.1);
+                flame.position.add(flame.velocity);
+            });
+
+            // Update explosions (apply gravity)
+            explosions.forEach((particle) => {
+                particle.rotation.x += 0.01;
+                particle.rotation.y += 0.01;
+                particle.rotation.z += 0.01;
+
+                particle.velocity.add(gravity);
+                particle.position.add(particle.velocity);
+            });
+
+            // Render
+            renderer.render(scene, camera);
+        }
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+    </script>
 </body>
 </html>
