@@ -8,19 +8,16 @@ html {
 }
 
 body {
-    background-color: #040404;
     position: relative;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: -1;
-    background-color: #0a0a0a;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-blend-mode: screen;
-    background-attachment: scroll; /* Add this line */
-    background-position: center; /* Add this line */
+    background-image: linear-gradient(#101010 2px, transparent 2px), linear-gradient(to right, #101010 2px, transparent 2px);
+    background-size: 38px 38px;
+    background-color: #0d0d0d;
+
     overflow: hidden;
 }
 
@@ -34,7 +31,7 @@ body {
     transform: translate(-50%, -50%);
     width: 1150px;
     height: 310px;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(8px);
     -moz-backdrop-filter: blur(8px);
     -o-backdrop-filter: blur(8px);
@@ -42,8 +39,9 @@ body {
     border-radius: 17px;
     /* border: 4px solid; */
     /* border-color: #50505026; */
-    background-color: #13131387;
-    overflow: hidden;
+    background-color: #0d0d0dc9;
+    border: solid 1px;
+    border-color: #191919;
 }
 
 @media screen and (max-width: 600px) {
@@ -83,20 +81,18 @@ body {
     left: 36px;
     /* filter: drop-shadow(rgba(0, 0, 0, 2.835) 1px 11px 16px); */
     z-index: 1;
-    border: 4px solid;
+   /* border: 4px solid;*/
     border-color: #131313;
 }
 .username {
     position: absolute;
-    color: #ffffff;
+    color: #eebf5b;
     text-shadow: 0 2px 20px #515151;
-    font-family: 'Poppins', sans-serif;
-    font-size: 22px;
-    font-weight: 200;
-    top: 166px;
+    font-family: 'BANNER', sans-serif;
+    font-size: 30px;
+    top: 160px;
     background-position: center center;
     background-size: 70%;
-    font-weight: 600;
     margin: auto;
     left: 171px;
 }
@@ -118,7 +114,7 @@ body {
     width: 39px;
     height: 39px;
     top: 193px;
-    border-radius: 9px;
+    border-radius: 59px;
     border: 2px solid rgba(255, 255, 255, 0.06);
     align-content: center;
     transition: box-shadow 0.3s ease 0s;
@@ -134,7 +130,7 @@ body {
 }
 
 #social:hover {
-    box-shadow: 0 0 10px rgba(105, 105, 105, 0.5); /* Added box-shadow on hover */
+    box-shadow: 0 0 10px rgba(45, 45, 45, 0.5); /* Added box-shadow on hover */
 }
 
 #socialicon {
@@ -174,8 +170,8 @@ body {
     height: 43px;
     display: flex;
     align-items: center;
-    top: 162px;
-    left: 308px;
+    top: 157px;
+    left: 315px;
 }
 
 #description {
@@ -243,3 +239,38 @@ body {
     /* position: absolute; */
     /* left: 50%; */
 }
+
+.contacts {
+    display: flex;
+    color: white;
+    width: 285px;
+    height: 43px;
+    position: fixed;
+    top: 324px;
+    left: 0%;
+    border-radius: 4px;
+    align-items: center;
+    border: solid 1px;
+    border-color: #191919;
+    background-color: #0e0e0e;
+}
+
+
+#Email {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    left: 10px;
+    position: absolute;
+}
+
+#EmailIcon {
+    position: absolute;
+    /* scale: 0; */
+    width: 20px;
+    left: 250px;
+}
+
+
+
+
+
