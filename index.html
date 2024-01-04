@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-    <link href="https://fonts.cdnfonts.com/css/lower-pixel" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/banner" rel="stylesheet">
+                
     <link rel="stylesheet" href="mystyle.css" />
     <style>
         body {
@@ -22,11 +22,18 @@
 <body>
     <div id="custom-cursor" style="position: absolute; width: 20px; height: 20px; border-radius: 50%; pointer-events: none;"></div>
     <main class="scene"></main>
+
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+
+    
     <div class="content">
-        <div class="banner">
-            <img class="pfp" src="media/pfp.jpeg" alt="Profile Picture">
-        </div>
-        <p class="username">@halfcupid</p>
+        <img class="pfp" alt="Profile Picture">
+
+
+        <span class="username">
+            @halfcupid
+        </span>
         <div class="typing-container">
             <p id="description"></p>
             <div class="cursor" id="cursor"></div>
@@ -44,12 +51,45 @@
             </a>
         </div>
         <div id="avatar-container"></div>
+        <div class="contacts">
+            <span id="Email">moonrockml@gmail.com</span>
+            <img id="EmailIcon" src="media/Gmailicon.svg.png"></img>
+        </div>
     </div>
     <b class="soundbutton" id="soundButton">
         <img class="sound" src="media/soundoff.png" alt="Sound Button">
     </b>
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6588389235099021" crossorigin="anonymous"></script>
+
+    <script>
+
+        function fetchData() {
+            fetch('https://api.lanyard.rest/v1/users/1126939075530731550')
+                .then(response => response.json())
+                .then(data => {
+                    updateContent(data);
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+    
+ 
+       function updateContent(data) {
+    const usernameContainer = document.querySelector('.username');
+    const pfpImage = document.querySelector('.pfp');
+
+    const username = data.data.discord_user.username;
+    const avatarHash = data.data.discord_user.avatar;
+
+    usernameContainer.textContent = `${username}`;
+
+    if (avatarHash) {
+        const avatarUrl = `https://cdn.discordapp.com/avatars/${data.data.discord_user.id}/${avatarHash}.png`;
+        pfpImage.src = avatarUrl;
+    }
+}
+        window.addEventListener('load', fetchData);
+    </script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -60,7 +100,7 @@
                 "buy me stuff",
                 "rolls royce",
                 "Happy new year blud",
-                "2024 finna be the worst year I KNOW IT RAH"
+                "2024 finna be the worst year."
             ];
 
             let currentDescriptionIndex = 0;
