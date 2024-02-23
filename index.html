@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.cdnfonts.com/css/sf-pro-display"
+      rel="stylesheet"
+    />
+
+    <title>@Truebyair</title>
+
+  </head>
+  <body>
+    <nav class="crumbs">
+      <div id="user">
+        <span id="usertext">@TrueByAir</span>
+        <img id="pfp" />
+      </div>
+      
+    </nav>
+    <div id="custom-cursor"></div>
+    <section class="section" id="section1">
+     
+      
+ 
+      <div class="contain">
+        <h1 class="bae">Who's David?</h1>
+        <h3 class="desc">
+          Hi. I'm David, a
+          <span id="descC1"> 15 year old learning Developer</span>
+          From
+          <span id="descC2"> New York.</span>
+        </h3>
+        <span class="socials">
+          <a href="https://www.instagram.com/saints.64/" target="_blank">
+            <img class="insta"src="Instagram_logo_2016.svg.png">
+          </a>
+          <a href="https://steamcommunity.com/id/proxydll" target="_blank">
+            <img class="steam" src="Steam_icon_logo.svg.png">
+          </a>
+        </span>
+        <hr>
+        <div class="loader">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+
+        <div class="discord_user">
+          <div style="width: 4rem; height: 4rem;">
+            <img class="DiscordAvatar" src="" alt="" style="border-radius: 999px; width: 4rem; height: 4rem;">
+          </div>
+          <div class="user_content">
+            <p class="username" style="margin: auto; font-weight: 500;">
+            </p>
+            <span style="color: #5e5e5e;  ">on discord</span>
+          </div>
+        </div>
+      </div>
+      <div class="arrow-container" onclick="scrollToNextSection()">
+        <div class="arrow"></div>
+      </div>
+    </section>
+
+    <section class="section" id="section2">
+      <h1 style="margin:0rem;">Opps Nothing Here Yet... 🕵️</h1>
+      <div class="loader" id="loader22">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </section>
+
+    <script>
+      function scrollToNextSection() {
+        const nextSection = document.querySelector("#section2");
+        if (nextSection) {
+          nextSection.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+
+      document.addEventListener("scroll", function () {
+        const arrowContainer = document.querySelector(".arrow-container");
+        if (arrowContainer) {
+          arrowContainer.style.opacity =
+            window.scrollY < window.innerHeight ? "1" : "0";
+        }
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const descriptionElement = document.getElementById("HI");
+        const cursorElement = document.getElementById("cursor");
+        const descriptions = [
+          "hello.",
+          "Hola.",
+          "Hallo.",
+          "Salam.",
+          "Ahoj.",
+          "Bonjour.",
+          "Aloha.",
+          "Salve.",
+          "Cześć.",
+          "Olá.",
+          "Privet Привет.",
+          "Zdravo Здраво.",
+          "S̄wạs̄dī สวัสดี.",
+          "Assalāmu Alaykum السلام عليكم",
+          "Salom.",
+          "Xin chào.",
+        ];
+
+        let currentDescriptionIndex = 0;
+        let index = 0;
+
+        function type() {
+          descriptionElement.textContent +=
+            descriptions[currentDescriptionIndex][index];
+          index++;
+
+          if (index < descriptions[currentDescriptionIndex].length) {
+            setTimeout(type, 100); // Adjust typing speed (milliseconds)
+          } else {
+            setTimeout(deleteText, 1000); // Adjust delay before deleting text
+          }
+        }
+
+        function deleteText() {
+          if (index > 0) {
+            descriptionElement.textContent = descriptions[
+              currentDescriptionIndex
+            ].substring(0, index - 1);
+            index--;
+
+            setTimeout(deleteText, 50); // Adjust deleting speed (milliseconds)
+          } else {
+            currentDescriptionIndex =
+              (currentDescriptionIndex + 1) % descriptions.length;
+            setTimeout(type, 500); // Adjust delay before typing next description
+          }
+        }
+
+        type(); // Start the typing effect
+      });
+    </script>
+
+<script>
+ function fetchData() {
+  // Simulating a delay for demonstration purposes
+  setTimeout(() => {
+    const discordUserContainer = document.querySelector('.discord_user');
+    const loader = document.querySelector('.loader');
+
+    fetch("https://api.lanyard.rest/v1/users/1126939075530731550")
+      .then((response) => response.json())
+      .then((data) => {
+        updateContent(data);
+        discordUserContainer.classList.add('loaded');
+        loader.style.opacity = 0;
+        setTimeout(() => loader.remove(), 50);
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  }, 2000); // Simulated 2 seconds delay, replace with actual fetch logic
+}
+
+function updateContent(data) {
+  const pfpImage = document.querySelector("#pfp");
+  const Avatar = document.querySelector(".DiscordAvatar");
+  const UserName = document.querySelector(".username");
+  const avatarHash = data.data.discord_user.avatar;
+  const username = data.data.discord_user.username;
+
+  UserName.textContent = `${username}`;
+
+  if (avatarHash) {
+    const avatarUrl = `https://cdn.discordapp.com/avatars/${data.data.discord_user.id}/${avatarHash}.png`;
+    pfpImage.src = avatarUrl;
+    Avatar.src = avatarUrl;
+    pfpImage.classList.add("loaded"); // Add the 'loaded' class
+  }
+}
+
+window.addEventListener("load", fetchData);
+</script>
+
+<script>
+  const container = document.querySelector('.contain');
+
+  document.addEventListener('mousemove', (event) => {
+    const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+    const mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+
+    const offsetX = mouseX * 15; // Adjust the following sensitivity
+    const offsetY = mouseY * 15;
+
+    container.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+  });
+</script>
+
+<script>
+  // Add an event listener for the scroll event
+  window.addEventListener("scroll", function () {
+    // Get the current scroll position
+    const scrollPosition = window.scrollY;
+
+    // Define the scroll position to trigger the color change
+    const scrollThreshold = 100; // Adjust this value as needed
+
+    // Get the navbar element
+    const navbar = document.querySelector(".crumbs");
+
+    // Check if the scroll position is beyond the threshold
+    if (scrollPosition > scrollThreshold) {
+      // Add a class to change the background color
+      navbar.classList.add("scrolled");
+    } else {
+      // Remove the class to revert to the original background color
+      navbar.classList.remove("scrolled");
+    }
+  });
+</script>
+<script>
+  const customCursor = document.getElementById('custom-cursor');
+
+  document.addEventListener('mousemove', (e) => {
+
+    customCursor.style.transform = `translate(-50%, -50%)`;
+    customCursor.style.left = `${e.clientX}px`;
+    customCursor.style.top = `${e.clientY}px`;
+  });
+</script>
+  </body>
+</html>
