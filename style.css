@@ -160,7 +160,7 @@ body {
   font-family: 'SF Pro Display', sans-serif;
   position: relative;
     transition: transform 0.2s ease-out; /* Add smooth transition */
-    padding: 0 16px;
+    padding: 0 30px;
 }
 
 .bae {
