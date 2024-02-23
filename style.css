@@ -22,6 +22,7 @@ body {
   width: 100vw;
   z-index: 100;
   color: white;
+  -webkit-backdrop-filter: blur(0px)!important;
   backdrop-filter: blur(0px);
   transition: background-color 0.3s ease-out, border-bottom 0.3s ease-out, backdrop-filter 0.3s ease-out; 
   border-bottom: 1px solid #00000000;
@@ -31,6 +32,7 @@ body {
 .scrolled {
   background-color: #4b4b4b41;
   border-bottom: 1px solid #84848441; 
+  -webkit-backdrop-filter: blur(13px)!important;
   backdrop-filter: blur(13px)/* Change this to your desired background color */
 }
 
