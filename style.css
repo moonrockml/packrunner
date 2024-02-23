@@ -369,3 +369,9 @@ hr {
   backdrop-filter: invert(100%);
   pointer-events: none;
 }
+
+@media (max-width: 767px) {
+  #custom-cursor {
+    display: none;
+  }
+}
