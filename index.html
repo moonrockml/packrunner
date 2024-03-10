@@ -20,7 +20,6 @@
       </div>
       
     </nav>
-    <div id="custom-cursor"></div>
     <section class="section" id="section1">
      
       
@@ -238,16 +237,6 @@ window.addEventListener("load", fetchData);
       // Remove the class to revert to the original background color
       navbar.classList.remove("scrolled");
     }
-  });
-</script>
-<script>
-  const customCursor = document.getElementById('custom-cursor');
-
-  document.addEventListener('mousemove', (e) => {
-
-    customCursor.style.transform = `translate(-50%, -50%)`;
-    customCursor.style.left = `${e.clientX}px`;
-    customCursor.style.top = `${e.clientY}px`;
   });
 </script>
   </body>
